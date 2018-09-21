@@ -26,7 +26,7 @@ public class LogCountMapper extends Mapper<Text, Text, MemberLogTime, IntWritabl
 		String member_name = key.toString() ;
 		String logTime = value.toString() ;
 
-		// 使用计数器
+		// 使用计数器统计map中数据记录数
 		if (logTime.contains("2016-01")) {
 			context.getCounter(LogCounter.January).increment(1);
 		} else if (logTime.contains("2016-02")) {
