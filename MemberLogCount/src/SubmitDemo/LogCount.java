@@ -23,7 +23,7 @@ public class LogCount extends Configured implements Tool{
 		// 参数数组
 		String[] myArgs = {
 				"/output/SelectDataSeq" ,
-				"/output/LogCntToolRunner"
+				"/output/LogCntSubmit"
 		};
 		try {
 			// 作业配置
@@ -39,13 +39,14 @@ public class LogCount extends Configured implements Tool{
 		conf.setBoolean("mapreduce.app-submission.cross-platform", true);
 		conf.set("fs.defaultFS", "hdfs://server01:9000"); //指定namenode
 		conf.set("mapreduce.framework.name", "yarn");  // 指定yarn框架
-		// 调用编写的打JAR包工具类，自动生成Jar包
-//		conf.set("mapreduce.job.jar", JarUtil.jar(LogCount.class));  //LogCount是驱动类的类名
+
 		String resourcenode = "server01" ;
 		conf.set("yarn.resourcemanager.address", resourcenode + ":8032"); //指定resourcemanager
 //		conf.set("yarn.resourcemanager.scheduler.address", resourcenode + ":8030"); //指定资源分配器
 //		conf.set("yarn.jobhistory.address", resourcenode + ":10020"); //指定resourcemanager
-		conf.set("yarn.job.jar", "E:/桌面/xxx.jar"); //指定resourcemanager
+		conf.set("mapreduce.job.jar", "E:/桌面/logCountSubmit.jar"); //指定resourcemanager
+		// 调用编写的打JAR包工具类，自动生成Jar包
+//		conf.set("mapreduce.job.jar", JarUtil.jar(LogCount.class));  //LogCount是驱动类的类名
 
 		return conf ;
 	}
@@ -53,10 +54,10 @@ public class LogCount extends Configured implements Tool{
 	@Override
 	public int run(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		Configuration conf = new Configuration();
-//		Configuration conf = getMyConfiguration()();
+		//		Configuration conf = new Configuration();
+		Configuration conf = getMyConfiguration();
 		
-		Job job = Job.getInstance(conf, "logcountTool");
+		Job job = Job.getInstance(conf, "logcountSubmit");
 		
 		// 设置主类和Mapper、Reducer类
 		job.setJarByClass(LogCount.class);
