@@ -33,10 +33,27 @@ public class LogCount extends Configured implements Tool{
 		}
 	}
 	
+	public static Configuration getMyConfiguration() {
+		// 声明配置
+		Configuration conf = new Configuration();
+		conf.setBoolean("mapreduce.app-submission.cross-platform", true);
+		conf.set("fs.defaultFS", "hdfs://server01:9000"); //指定namenode
+		conf.set("mapreduce.framework.name", "yarn");  // 指定yarn框架
+		String resourcenode = "server01" ;
+		conf.set("yarn.resourcemanager.address", resourcenode + ":8032"); //指定resourcemanager
+//		conf.set("yarn.resourcemanager.scheduler.address", resourcenode + ":8030"); //指定资源分配器
+//		conf.set("yarn.jobhistory.address", resourcenode + ":10020"); //指定resourcemanager
+		conf.set("yarn.job.jar", "E:/桌面/xxx.jar"); //指定resourcemanager
+
+		return conf ;
+	}
+	
 	@Override
 	public int run(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		Configuration conf = new Configuration();
+//		Configuration conf = getMyConfiguration()();
+		
 		Job job = Job.getInstance(conf, "logcountTool");
 		
 		// 设置主类和Mapper、Reducer类

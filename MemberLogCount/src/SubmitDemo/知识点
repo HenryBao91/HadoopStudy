@@ -1,41 +1,12 @@
-一、Configuration设置参数方法
-1、方法:
-	void set(String name , String value , String source)
-	void setDouble(String name , double value) 
-	setBoolean、setFloa、setInt、setLong、setPattern
-2、参数说明：
-（1）name：为传进来的参数设置的属性名称
-（2）value：传进来的参数值
-（3）source：该配置值的来源（用于调试）
-（4）pattern：模式值
-3、常用方法：
-	void set(String name , String value )
-4、set方法使用
-// 初始化配置，getconf()自动获取配置函数
-	Configuration conf = getconf() ;
-// 设置第一个参数的属性名称为inputPath
-	conf.set("inputPath",args[0]) ;
-// 设置第二个参数的属性名称为outputPath
-	conf.set("outputPath",args[0]) ;	
-5、获取参数值
-  在MapReduce中，经常会用上下文对象Context来传递<key,value>，
-可以在Mapper或Reducer中通过这个上下文对象中的getConfiguration()方法获取配置对象Configuration，
-再调用Configuration里面的get(String name)方法获取这些参数值。Mapper或者Reducer类提供了一个
-setup(Context context)方法，该方法在MapReduce程序运行时只会被调用一次，所以可以通过重写该方法
-进行参数值的获取。
-// 通过属性名称inputPath获取第一个参数值
-	String inputPath = context.getConfiguration().get("inputPath") ;  	
-// 通过属性名称outputPath获取第二个参数值
-	String outputPath = context.getConfiguration().get("outputPath") ;  	
-6、Hadoop辅助类ToolRunner
-  Hadoop自带一些辅助类，其中GenericOptionsParse是一个用来解释常用的Hadoop命令选项的类，
-该类可以根据需要为Configuration对象设置相应的取值。通常不直接使用 GenericOptionsParse，
-更方便的方式是实现Tool接口，通过ToolRunner来运行应用程序，ToolRunner内部调用GenericOptionsParse。
-（1）、使驱动类继承Hadoop配置Configured，并实现Tool接口以及Tool接口里面的run(String[] args)方法；
-（2）、在run(String[] args)里面进行MapReduce作业的相关配置；
-（3）、编写main方法，调用ToolRunner里面的run(Configuration conf ,Tool tool ,String[] args)
-以上，完成传递相关参数
-
+一、连接Hadoop集群配置方法
+       在驱动类中添加一个连接Hadoop集群配置的方法getMyConfiguration
+二、调用自定义的获取集群配置的方法
+Configuration conf = getMyConfiguration();
+       添加上述集群配置代码就不需要用hadoop jar命令运行MapReduce任务，只需要
+将程序打包后放到桌面，在驱动类中单击右键，选择“Runner As” -> “Java Application”。
+三、添加日志文件
+      在工程src包下面添加日志文件log4j.properties的代码，该文件的目的是将运行程序的
+日志打印到控制台。
 
 
 	
