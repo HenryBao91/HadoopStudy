@@ -39,6 +39,8 @@ public class LogCount extends Configured implements Tool{
 		conf.setBoolean("mapreduce.app-submission.cross-platform", true);
 		conf.set("fs.defaultFS", "hdfs://server01:9000"); //指定namenode
 		conf.set("mapreduce.framework.name", "yarn");  // 指定yarn框架
+		// 调用编写的打JAR包工具类，自动生成Jar包
+//		conf.set("mapreduce.job.jar", JarUtil.jar(LogCount.class));  //LogCount是驱动类的类名
 		String resourcenode = "server01" ;
 		conf.set("yarn.resourcemanager.address", resourcenode + ":8032"); //指定resourcemanager
 //		conf.set("yarn.resourcemanager.scheduler.address", resourcenode + ":8030"); //指定资源分配器
