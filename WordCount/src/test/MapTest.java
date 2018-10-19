@@ -14,6 +14,22 @@ import org.apache.hadoop.mapreduce.Mapper;
  * 3、cleanup：在所有键值对处理完成后，再调用cleanup函数，其主要用于关闭资源等操作。
  * */
 
+/** 自定义Map函数：覆盖map函数：继承Mapper类并重写map方法
+ * @param KEYIN
+ *            →k1 表示每一行的起始位置（偏移量offset）
+ * @param VALUEIN
+ *            →v1 表示每一行的文本内容
+ * @param KEYOUT
+ *            →k2 表示每一行中的每个单词
+ * @param VALUEOUT
+ *            →v2 表示每一行中的每个单词的出现次数，固定值为1
+ */
+
+/*从代码中可以看出，在Mapper类和Reducer类中都使用了Hadoop自带的基本数据类型，
+ * 例如String对应Text，long对应LongWritable，int对应IntWritable。
+ * 这是因为HDFS涉及到序列化的问题，Hadoop的基本数据类型都实现了一个Writable接口，
+ * 而实现了这个接口的类型都支持序列化。
+ * */
 
 // 自定义Mapper模块类名MapTest，需要继承Mapper，同时需要设置输入/输出键值对格式
 	// 其中，键值对格式要和输入格式设置的类读取生成的键值对格式匹配
@@ -25,7 +41,7 @@ public class MapTest extends Mapper<Object, Text, Text, IntWritable>{
 	
 	//存放单词的变量
     private Text word = new Text(); 
-       
+     // 每次调用map方法都会传入split中一行数据，key：该行数据所在文件位置的下标，value：这行数据   
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
      /**

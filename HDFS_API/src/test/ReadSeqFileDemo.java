@@ -44,5 +44,7 @@ public class ReadSeqFileDemo {
 		}
 		out.close();
 		reader.close();
+		
+		System.out.println("Code Over");
 	}
 }

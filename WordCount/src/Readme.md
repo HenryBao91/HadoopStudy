@@ -1,36 +1,36 @@
- Ò»¡¢     StringTokenizerÑ§Ï°
- StringTokenizerÊ¹ÓÃ£¬×÷ÓÃÍ¨split£¬ÓĞÈıÖÖ¹¹Ôìº¯Êı£º
+ ä¸€ã€     StringTokenizerå­¦ä¹ 
+ StringTokenizerä½¿ç”¨ï¼Œä½œç”¨é€šsplitï¼Œæœ‰ä¸‰ç§æ„é€ å‡½æ•°ï¼š
        	public StringTokenizer(String str,String delim,boolean returnDelims)
 	    public StringTokenizer(String str,String delim)
 	    public StringTokenizer(String str)	
-    ²ÎÊı£º 
-	str - Òª½âÎöµÄ×Ö·û´®¡£ 
-	delim - ·Ö¸ô·û¡£ 
-	returnDelims - Ö¸Ê¾ÊÇ·ñ½«·Ö¸ô·û×÷Îª±ê¼Ç·µ»ØµÄ±êÖ¾¡£
-     ÆäÖĞ£¬µ¥²ÎÊıÊ±£¬delimÎªÄ¬ÈÏÖµ£¬Àı×Ó£º        
+    å‚æ•°ï¼š 
+	str - è¦è§£æçš„å­—ç¬¦ä¸²ã€‚ 
+	delim - åˆ†éš”ç¬¦ã€‚ 
+	returnDelims - æŒ‡ç¤ºæ˜¯å¦å°†åˆ†éš”ç¬¦ä½œä¸ºæ ‡è®°è¿”å›çš„æ ‡å¿—ã€‚
+     å…¶ä¸­ï¼Œå•å‚æ•°æ—¶ï¼Œdelimä¸ºé»˜è®¤å€¼ï¼Œä¾‹å­ï¼š        
     String nameStr="Harry James Potter";
-   //½«Òª²ğ·ÖµÄ×Ö·û´«Èë¹¹Ôìº¯ÊıÖĞ£¬Éú³ÉÒ»¸ötoken¶ÔÏó
+   //å°†è¦æ‹†åˆ†çš„å­—ç¬¦ä¼ å…¥æ„é€ å‡½æ•°ä¸­ï¼Œç”Ÿæˆä¸€ä¸ªtokenå¯¹è±¡
    StringTokenizer strToken=new StringTokenizer(nameStr);
-   //µ±ÓĞ²ğ·ÖµÄ×Ó×Ö·û´®Ê±£¬Êä³öÕâ¸ö×Ö·û´®
+   //å½“æœ‰æ‹†åˆ†çš„å­å­—ç¬¦ä¸²æ—¶ï¼Œè¾“å‡ºè¿™ä¸ªå­—ç¬¦ä¸²
    while(strToken.hasMoreTokens()){
       System.out.println(strToken.nextToken());
    }
-    Êä³ö½á¹û£º
+    è¾“å‡ºç»“æœï¼š
     Harry
 	James
 	Potter         
      
      
      
-¶ş¡¢¸ñÊ½Àà
- 	BooleanWritable£º±ê×¼²¼¶ûĞÍÊıÖµ
-    ByteWritable£ºµ¥×Ö½ÚÊıÖµ
-    DoubleWritable£ºË«×Ö½ÚÊı
-    FloatWritable£º¸¡µãÊı
-    IntWritable£ºÕûĞÍÊı
-    LongWritable£º³¤ÕûĞÍÊı
-    Text£ºÊ¹ÓÃUTF8¸ñÊ½´æ´¢µÄÎÄ±¾
-    NullWritable£ºµ±<key,value>ÖĞµÄkey»òvalueÎª¿ÕÊ±Ê¹ÓÃ     
+äºŒã€æ ¼å¼ç±»
+ 	BooleanWritableï¼šæ ‡å‡†å¸ƒå°”å‹æ•°å€¼
+    ByteWritableï¼šå•å­—èŠ‚æ•°å€¼
+    DoubleWritableï¼šåŒå­—èŠ‚æ•°
+    FloatWritableï¼šæµ®ç‚¹æ•°
+    IntWritableï¼šæ•´å‹æ•°
+    LongWritableï¼šé•¿æ•´å‹æ•°
+    Textï¼šä½¿ç”¨UTF8æ ¼å¼å­˜å‚¨çš„æ–‡æœ¬
+    NullWritableï¼šå½“<key,value>ä¸­çš„keyæˆ–valueä¸ºç©ºæ—¶ä½¿ç”¨     
     
     
     

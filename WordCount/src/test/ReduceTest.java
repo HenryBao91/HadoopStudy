@@ -12,6 +12,17 @@ import org.apache.hadoop.mapreduce.Reducer;
  * 2、reducer：reducer针对相同键，把其键值全部累加起来，最后输出结果
  * */
 
+/** 自定义Reduce函数：覆盖Reducer函数：继承Reducer类并重写Reduce方法
+ * @param KEYIN
+ *            →k2 表示每一行中的每个单词
+ * @param VALUEIN
+ *            →v2 表示每一行中的每个单词的出现次数，固定值为1
+ * @param KEYOUT
+ *            →k3 表示每一行中的每个单词
+ * @param VALUEOUT
+ *            →v3 表示每一行中的每个单词的出现次数之和
+ */
+
 //自定义Reducer模块类名ReduceTest，需要继承Reducer，同时需要设置输入/输出键值对格式
 	// 其中，输入键值对格式要和Mapper的输出键值对格式保持一致
 	// 输出键值对格式需要和Driver模块中设置的Reducer输出的键值对格式匹配
