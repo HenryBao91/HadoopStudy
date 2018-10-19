@@ -21,16 +21,17 @@ public class MyReducer extends Reducer<Text, IntWritable, Text, IntWritable>{
 
 	// 创建 IntWritable
 	private IntWritable result = new IntWritable()  ;
-	
+								// Iterable迭代器，其中的元素值是IntWritable类型
 	public void reduce(Text key , Iterable<IntWritable> values, Context context) 
 			throws IOException, InterruptedException {
 		// 定义累加器，初始值为0
 		int sum = 0 ;
 		for (IntWritable val : values) {
 			// 将相同键的所有值进行累加
-			sum += val.get() ;
+			sum += val.get() ;  // 使用get()方法把Iterable变成Int类型整数
 		}
 		result.set(sum);
 		context.write(key, result);
+	//或 	context.write(key, new IntWritable(sum));
 	}
 }
