@@ -13,8 +13,8 @@ public class QQFreind {
 		Configuration conf = new Configuration();
 		Job job = Job.getInstance(conf, "QQFreindRecommend");
 		job.setJarByClass(Demo.QQFreind.class);
+		
 		job.setMapperClass(Demo.MyMapper.class);
-
 		job.setReducerClass(Demo.MyReducer.class);
 
 		// TODO:设置key/value输出格式
