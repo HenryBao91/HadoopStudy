@@ -3,9 +3,11 @@ package temper;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
 
-public class FirstPartition extends Partitioner<temperatureRank, Text>{
-	// 按照年份进行分区
-	public int getPartition(temperatureRank key, Text value, int num) {
+public class FirstPartition extends Partitioner<keyPair, Text>{
+	
+	// 閲嶆柊鑷畾涔夊垎鍖虹殑鏂规硶
+	public int getPartition(keyPair key, Text value, int num) {
+		// 骞翠唤鍦╧ey閲岄潰
 		return (key.getYear()*127) % num;
 	}
 
