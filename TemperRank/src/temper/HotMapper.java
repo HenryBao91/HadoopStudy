@@ -27,14 +27,14 @@ public class HotMapper extends Mapper<LongWritable, Text, keyPair, Text> {
 				Calendar c = Calendar.getInstance();
 				c.setTime(date);
 				int year = c.get(1) ;  //得到年份
-				String hot = ss[1].substring(0, ss[1].indexOf("°C")) ;
-				
+				String hot = ss[1].substring(0, ss[1].indexOf("°C")) ;  // 得到温度值
+
 				// 输出key值
 				keyPair kp = new keyPair() ;
 				kp.setYear(year);
 				kp.setHot(Integer.parseInt(hot));
 				
-				context.write(kp, new Text(value+"°C") );
+				context.write( kp, new Text(value) );
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -1,0 +1,13 @@
+一、连接Hadoop集群配置方法
+       在驱动类中添加一个连接Hadoop集群配置的方法getMyConfiguration
+二、调用自定义的获取集群配置的方法
+Configuration conf = getMyConfiguration();
+       添加上述集群配置代码就不需要用hadoop jar命令运行MapReduce任务，只需要
+将程序打包后放到桌面，在驱动类中单击右键，选择“Runner As” -> “Java Application”。
+三、添加日志文件
+      在工程src包下面添加日志文件log4j.properties的代码，该文件的目的是将运行程序的
+日志打印到控制台。
+
+
+	
+	
