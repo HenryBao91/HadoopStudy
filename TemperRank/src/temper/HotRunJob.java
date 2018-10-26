@@ -28,7 +28,7 @@ public class HotRunJob {
 	    job.setNumReduceTasks(6);   // 设置reduce数量，要和年份个数保持一致
 	    job.setPartitionerClass(temper.FirstPartition.class);
 	    job.setSortComparatorClass(temper.SortHot.class);
-	    job.setGroupingComparatorClass(temper.GroupHot.class);
+	    job.setGroupingComparatorClass(temper.GroupHot.class);      
 	    
 		// TODO: specify input and output DIRECTORIES (not files)
 	    FileInputFormat.addInputPath(job, new Path("hdfs://server01:9000/input/hot"));   
